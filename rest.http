@@ -1,0 +1,65 @@
+@baseUrl = http://localhost:3000
+@apiUrl = {{baseUrl}}/api/v1
+
+# GET REQUEST
+GET {{baseUrl}}
+
+###
+POST {{apiUrl}}/auth
+Content-Type: application/json
+
+{
+  "username" : "user3",
+  "email" : "user3@gmail.com",
+  "password" : "1234"
+}
+
+###
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email" : "test@gmail.com",
+  "password" : "1234"
+}
+
+
+###
+POST {{apiUrl}}/transactions
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzUzMDcwNjU4LCJleHAiOjE3NTMxNTcwNTh9.D4527hpM-_5TdA8R9C74rti_pgUW5szCe__JBWtDhK0
+
+{
+  "type": "income",
+  "description": "Update Salary",
+  "date": "11-10-2024",
+  "amount" : 1200
+}
+
+###
+PATCH {{apiUrl}}/transactions/687f0cefb87b07a117d43e67
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzUzMTU3MDg1LCJleHAiOjE3NTMyNDM0ODV9.xs9LcFQejxPxhF0LUYrTIsOTV0SaovDyTWmaqRr3s3o
+
+{
+  "type": "expense",
+  "description": "Update Salary 3",
+  "date": "11-10-2025",
+  "amount" : 400
+}
+
+###
+GET {{apiUrl}}/transactions
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzUzMTU3MDg1LCJleHAiOjE3NTMyNDM0ODV9.xs9LcFQejxPxhF0LUYrTIsOTV0SaovDyTWmaqRr3s3o
+
+###
+DELETE {{apiUrl}}/transactions/687d827c871d82216eacf017
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzUzMDcwNjU4LCJleHAiOjE3NTMxNTcwNTh9.D4527hpM-_5TdA8R9C74rti_pgUW5szCe__JBWtDhK0
+
+###
+GET {{apiUrl}}/auth/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzUzMDcwNjU4LCJleHAiOjE3NTMxNTcwNTh9.D4527hpM-_5TdA8R9C74rti_pgUW5szCe__JBWtDhK0
+
+###
+GET {{apiUrl}}/dashboard
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzUzMDcwNjU4LCJleHAiOjE3NTMxNTcwNTh9.D4527hpM-_5TdA8R9C74rti_pgUW5szCe__JBWtDhK0
