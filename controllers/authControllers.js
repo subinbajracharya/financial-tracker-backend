@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { createUser, getUser } from "../models/users/userModel.js";
+import { createUser, getUser, updateUser } from "../models/users/userModel.js";
 import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
@@ -89,3 +89,33 @@ export const loginUser = async (req, res) => {
     });
   }
 };
+
+export const verifyEmail = async (req, res) => {
+  try {
+    let token = req.query.t
+    let email = req.query.email
+
+    let user = await getUser({ email: email })
+
+    if (user && user.emailVerificationToken === token) {
+      // let updatedUser = await updateUser({ email: email }, { isEmailVerified: true })
+
+      user.isEmailVerified = true;
+      user.emailVerificationToken = ""
+      await user.save() // Saving in database
+
+      return res.status(200).json({
+        status: true,
+        message: "Email Verified"
+      })
+
+    }
+  } catch (error) {
+    console.log(error.message)
+
+    return res.json({
+      status: false,
+      message: "Verification Failed"
+    })
+  }
+}

@@ -44,6 +44,9 @@ app.post("/api/v1/auth", registerUser);
 // login
 app.post("/api/v1/auth/login", loginUser);
 
+// verify email
+// app.get("/verify-email", verifyEmail)
+
 // get user Detaul
 app.get("/api/v1/auth/user", auth, (req, res) => {
   return res.json({
