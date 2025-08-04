@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoConnection from "./config/mongoConfig.js";
 import dotenv from "dotenv";
-import { loginUser, registerUser } from "./controllers/authControllers.js";
+import { loginUser, registerUser, resendToken, verifyEmail } from "./controllers/authControllers.js";
 import {
   createTransaction,
   deleteTransaction,
@@ -34,7 +34,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({
     status: true,
-    message: "I AM ALIVE",
+    message: "Ready, Set and Go",
   });
 });
 
@@ -45,9 +45,12 @@ app.post("/api/v1/auth", registerUser);
 app.post("/api/v1/auth/login", loginUser);
 
 // verify email
-// app.get("/verify-email", verifyEmail)
+app.get("/api/v1/verify-email", verifyEmail)
 
-// get user Detaul
+// Resend token
+app.get("/api/v1/resend-token", resendToken);
+
+// Get user Detail
 app.get("/api/v1/auth/user", auth, (req, res) => {
   return res.json({
     status: true,
@@ -56,7 +59,7 @@ app.get("/api/v1/auth/user", auth, (req, res) => {
   });
 });
 
-// dashboard api
+// Dashboard api
 app.get("/api/v1/dashboard", auth, async (req, res) => {
   let userId = req.user._id;
 

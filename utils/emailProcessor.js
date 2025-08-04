@@ -1,3 +1,5 @@
+import nodemailer from "nodemailer"
+
 // Send email
 const processEmail = async (obj) => {
     // Create email transporter
@@ -12,7 +14,7 @@ const processEmail = async (obj) => {
     });
 
     const info = await transporter.sendMail({
-        from: `"Dented Code" <${process.env.EMAIL_USER}>`,
+        from: `"Financial Tracker" <${process.env.EMAIL_USER}>`,
         ...obj
     });
 
@@ -24,9 +26,22 @@ export const sendEmailVerificationTemplate = async (to, url, userName) => {
         to,
         subject: "Verify your Email",
         text: `Please verify your email by clicking on this link ${url}`,
-        html: `<p>Dear ${userName},</p>
-        
-        `
+        html: `
+        <p>Dear ${userName},</p>
+        <h1>To verify your account, please click the button below<h1>
+        <br />
+        <br />
 
+        <a href="${url}" target="_blank" style="background-color: green; color: white; padding: 10px 15px; border-radius: 8px">Verify Your Email</a>
+        <br />
+        <br />
+        <p>Thank you for registering with us!</p>
+        <br />
+        <br />
+        <p>Warm Regards,</p>
+        <p>Financial Tracker</p>
+        `,
     }
+
+    await processEmail(obj)
 }
