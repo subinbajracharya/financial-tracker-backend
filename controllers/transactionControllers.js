@@ -1,5 +1,5 @@
 import {
-  deleteTransactionByUserId,
+  deleteTransactionsByUserId,
   getTransactionsByUserId,
   insertTransaction,
   updateTransactionByUserId,
@@ -58,9 +58,9 @@ export const deleteTransaction = async (req, res) => {
     // fetch the trasactions
     // auth middleware
     let userId = req.user._id;
-    let tid = req.params.id;
+    let tid = req.body;
 
-    let transaction = await deleteTransactionByUserId(tid, userId);
+    let transaction = await deleteTransactionsByUserId(tid, userId);
 
     return res.status(200).json({
       status: true,

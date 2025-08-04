@@ -99,7 +99,7 @@ app.post("/api/v1/transactions", auth, createTransaction);
 app.get("/api/v1/transactions", auth, getTransactions);
 
 // // dete a transaction
-app.delete("/api/v1/transactions/:id", auth, deleteTransaction);
+app.delete("/api/v1/transactions", auth, deleteTransaction);
 
 // update transaction
 app.patch("/api/v1/transactions/:id", auth, updateTransaction);
