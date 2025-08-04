@@ -9,8 +9,8 @@ POST {{apiUrl}}/auth
 Content-Type: application/json
 
 {
-  "username" : "user3",
-  "email" : "user3@gmail.com",
+  "username" : "user4",
+  "email" : "user4@gmail.com",
   "password" : "1234"
 }
 
@@ -19,7 +19,7 @@ POST {{apiUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email" : "test@gmail.com",
+  "email" : "user4@gmail.com",
   "password" : "1234"
 }
 
@@ -27,13 +27,13 @@ Content-Type: application/json
 ###
 POST {{apiUrl}}/transactions
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzUzMDcwNjU4LCJleHAiOjE3NTMxNTcwNTh9.D4527hpM-_5TdA8R9C74rti_pgUW5szCe__JBWtDhK0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI0QGdtYWlsLmNvbSIsImlhdCI6MTc1Mzc2MjMxMSwiZXhwIjoxNzUzODQ4NzExfQ.wh1EGskG7I6W_A7klOcv5sq3_Eu0-1x-_2Tw0dWk7Wc
 
 {
   "type": "income",
-  "description": "Update Salary",
+  "description": "Salary",
   "date": "11-10-2024",
-  "amount" : 1200
+  "amount" : 1000
 }
 
 ###
