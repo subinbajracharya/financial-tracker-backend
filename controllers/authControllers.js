@@ -24,16 +24,16 @@ export const registerUser = async (req, res) => {
       // Send email verification link
       const url = process.env.ROOT_DOMAIN + `/verify-email?t=${emailVerificationToken}&email=${newUser.email}`
 
-      sendEmailVerificationTemplate(
-        newUser.email,
+      sendEmailVerificationTemplate({
+        to: newUser.email,
         url,
-        newUser.username
-      )
+        userName: newUser.username
+      })
     }
 
     return res.status(201).json({
       status: true,
-      message: "User successfully created! Please verify your email before logging in.",
+      message: "User successfully created!<br /> Verify your email before logging in.",
     });
   } catch (err) {
     console.log(err.message);
