@@ -28,15 +28,11 @@ export const sendEmailVerificationTemplate = async ({ to, url, userName }) => {
         text: `Please verify your email by clicking on this link ${url}`,
         html: `
         <p>Dear ${userName},</p>
-        <h1>To verify your account, please click the button below<h1>
+        <h3>To verify your account, please click the button below</h3>
         <br />
-        <br />
-
         <a href="${url}" target="_blank" style="background-color: green; color: white; padding: 10px 15px; border-radius: 8px">Verify Your Email</a>
         <br />
-        <br />
         <p>Thank you for registering with us!</p>
-        <br />
         <br />
         <p>Warm Regards,</p>
         <p>Financial Tracker</p>

@@ -7,10 +7,10 @@ export const auth = async (req, res, next) => {
   console.log("AUTHETICATED CALLED");
   try {
     let accessToken = req.headers.authorization;
-    console.log("TOKEN", accessToken);
+    // console.log("TOKEN", accessToken);
 
     let decoded = jwt.verify(accessToken, process.env.JWT_SECRET);
-    console.log("DECODED VALUE: ", decoded);
+    // console.log("DECODED VALUE: ", decoded);
 
     let user = await getUser({ email: decoded.email });
 
