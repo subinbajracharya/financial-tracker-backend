@@ -9,29 +9,29 @@ export const getUsers = () => {
   return User.find();
 };
 
-// get user by id
+// Get user by id
 export const getUserById = (id) => {
   return User.findById(id);
 };
 
-// get user by filter
+// Get user by filter
 export const getUser = (filter) => {
   // filter: {email: 'email'}
   // filter: {username: 'name'}
   return User.findOne(filter);
 };
 
-// creat user
+// Create user
 export const createUser = (userObj) => {
   return User.insertOne(userObj);
 };
 
-// update user
+// Update user
 export const updateUser = (id, updateObj) => {
   return User.findByIdAndUpdate(id, updateObj);
 };
 
-// delete user
+// Delete user
 export const deleteUser = (id) => {
   return User.findByIdAndDelete(id);
 };

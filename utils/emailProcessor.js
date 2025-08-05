@@ -15,13 +15,13 @@ const processEmail = async (obj) => {
 
     const info = await transporter.sendMail({
         from: `"Financial Tracker" <${process.env.EMAIL_USER}>`,
-        ...obj
+        ...obj,
     });
 
     console.log("Message sent:", info.messageId);
 }
 
-export const sendEmailVerificationTemplate = async (to, url, userName) => {
+export const sendEmailVerificationTemplate = async ({ to, url, userName }) => {
     const obj = {
         to,
         subject: "Verify your Email",
