@@ -22,7 +22,7 @@ export const registerUser = async (req, res) => {
       const result = await updateUser(newUser._id, { emailVerificationToken })
 
       // Send email verification link
-      const url = process.env.ROOT_DOMAIN + `/verify-email?t=${emailVerificationToken}&email=${newUser.email}`
+      const url = process.env.ROOT_DOMAIN + `/api/v1/verify-email?t=${emailVerificationToken}&email=${newUser.email}`
 
       sendEmailVerificationTemplate({
         to: newUser.email,
@@ -174,9 +174,9 @@ export const resendToken = async (req, res) => {
       // send the email
       const url =
         process.env.ROOT_DOMAIN +
-        `/verify-email?t=${user.emailVerificationToken}&email=${user.email}`;
+        `/api/v1/verify-email?t=${user.emailVerificationToken}&email=${user.email}`;
 
-      sendEmailVerificationTemplete({
+      sendEmailVerificationTemplate({
         to: user.email,
         url,
         userName: user.username,
