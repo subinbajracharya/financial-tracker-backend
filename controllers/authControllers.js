@@ -22,7 +22,7 @@ export const registerUser = async (req, res) => {
       const result = await updateUser(newUser._id, { emailVerificationToken })
 
       // Send email verification link
-      const url = process.env.ROOT_DOMAIN + `/api/v1/verify-email?t=${emailVerificationToken}&email=${newUser.email}`
+      const url = process.env.ROOT_DOMAIN + `/verify-email?t=${emailVerificationToken}&email=${newUser.email}`
 
       sendEmailVerificationTemplate({
         to: newUser.email,
@@ -33,7 +33,7 @@ export const registerUser = async (req, res) => {
 
     return res.status(201).json({
       status: true,
-      message: "Verification email sent to your email.",
+      message: "User successfully created!",
     });
   } catch (err) {
     console.log(err.message);
@@ -174,7 +174,7 @@ export const resendToken = async (req, res) => {
       // send the email
       const url =
         process.env.ROOT_DOMAIN +
-        `/api/v1/verify-email?t=${user.emailVerificationToken}&email=${user.email}`;
+        `/verify-email?t=${user.emailVerificationToken}&email=${user.email}`;
 
       sendEmailVerificationTemplate({
         to: user.email,
